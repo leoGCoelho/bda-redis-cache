@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    command: python bda_redis_cache.py
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
